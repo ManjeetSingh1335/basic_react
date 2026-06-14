@@ -8,7 +8,7 @@ function App() {
   
   return (
     <>
-      <h1>Learn about redux toolkit</h1>
+      <h1 style={{ color: 'white', textAlign: 'center' }}>Learn about redux toolkit</h1>
       <AddTodo />
       <Todos />
     </>
