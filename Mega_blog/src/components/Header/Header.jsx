@@ -1,14 +1,14 @@
 import {Container, Logo, LogoutBtn} from '../index.js'
-import { Link } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
 import {useSelector} from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 
 function Header() {
 
     const authStatus=useSelector((state) => state.auth.status)
+    const navigate=useNavigate()
+    const location=useLocation()
     
-    const navigate=useNavigate();
-
     const navItems=[
         {
             name: 'Home',
@@ -38,33 +38,38 @@ function Header() {
     ]
 
   return (
-    <header className='py-3 shadow bg-gray-500'>
+    <header className='sticky top-0 z-50 py-3.5 glass-nav transition-all duration-300'>
         <Container>
-            <nav className='flex'>
+            <nav className='flex items-center justify-between'>
                 
-                <div className='mr-4'>
-                    <Link to='/'>
-                        <Logo width='70px'   />
+                <div className='flex items-center'>
+                    <Link to='/' className="focus:outline-none">
+                        <Logo width='70px' />
                     </Link>
                 </div>
                     
-                    
-                <ul className='flex ml-auto'>
-                    {navItems.map((item) => 
-                        item.active? (
-                        <li key={item.name}>
-                            <button
-                                onClick={()=>navigate(item.slug)}
-                                className='inline-bock px-6 py-2 duration-200 hover:bg-blue-100 rounded-full'
-                            >
-                                {item.name}
-                            </button>
-                        </li>
-                        ):null
-                    )}
+                <ul className='flex items-center gap-1.5'>
+                    {navItems.map((item) => {
+                        if (!item.active) return null;
+                        const isActive = location.pathname === item.slug;
+                        return (
+                            <li key={item.name}>
+                                <button
+                                    onClick={()=>navigate(item.slug)}
+                                    className={`px-4 py-2 text-sm font-semibold rounded-xl transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-indigo-500/25 ${
+                                        isActive 
+                                        ? 'bg-indigo-600 text-white shadow-md shadow-indigo-600/10' 
+                                        : 'text-slate-300 hover:text-white hover:bg-slate-800/60'
+                                    }`}
+                                >
+                                    {item.name}
+                                </button>
+                            </li>
+                        );
+                    })}
 
                     {authStatus&&(
-                        <li>
+                        <li className="ml-1 pl-1 border-l border-slate-800">
                             <LogoutBtn />
                         </li>
                     )}
