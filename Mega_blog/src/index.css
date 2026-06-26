@@ -15,16 +15,16 @@
   }
   
   ::-webkit-scrollbar-track {
-    background: #0b0f19;
+    background: #f1f5f9;
   }
   
   ::-webkit-scrollbar-thumb {
-    background: #1e293b;
+    background: #cbd5e1;
     border-radius: 4px;
   }
   
   ::-webkit-scrollbar-thumb:hover {
-    background: #334155;
+    background: #94a3b8;
   }
 }
 
@@ -32,22 +32,22 @@
   .bg-grid-pattern {
     background-size: 40px 40px;
     background-image: 
-      linear-gradient(to right, rgba(148, 163, 184, 0.05) 1px, transparent 1px),
-      linear-gradient(to bottom, rgba(148, 163, 184, 0.05) 1px, transparent 1px);
+      linear-gradient(to right, rgba(100, 116, 139, 0.04) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(100, 116, 139, 0.04) 1px, transparent 1px);
   }
   
   .glass-card {
-    background: rgba(30, 41, 59, 0.45);
+    background: rgba(255, 255, 255, 0.7);
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
-    border: 1px solid rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(16, 185, 129, 0.12);
   }
   
   .glass-nav {
-    background: rgba(15, 23, 42, 0.75);
+    background: rgba(255, 255, 255, 0.8);
     backdrop-filter: blur(16px);
     -webkit-backdrop-filter: blur(16px);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    border-bottom: 1px solid rgba(16, 185, 129, 0.1);
   }
   
   /* Browser CSS Rich Text formatting */
@@ -56,7 +56,7 @@
     font-weight: 800;
     margin-top: 2rem;
     margin-bottom: 1rem;
-    color: #f8fafc;
+    color: #0f172a;
     line-height: 1.25;
   }
   .browser-css h2 {
@@ -64,7 +64,7 @@
     font-weight: 700;
     margin-top: 1.75rem;
     margin-bottom: 0.75rem;
-    color: #f8fafc;
+    color: #0f172a;
     line-height: 1.35;
   }
   .browser-css h3 {
@@ -72,64 +72,64 @@
     font-weight: 700;
     margin-top: 1.5rem;
     margin-bottom: 0.75rem;
-    color: #f8fafc;
+    color: #0f172a;
   }
   .browser-css p {
     margin-bottom: 1.25rem;
     line-height: 1.8;
-    color: #cbd5e1;
+    color: #334155;
   }
   .browser-css ul {
     list-style-type: disc;
     padding-left: 1.5rem;
     margin-bottom: 1.25rem;
-    color: #cbd5e1;
+    color: #334155;
   }
   .browser-css ol {
     list-style-type: decimal;
     padding-left: 1.5rem;
     margin-bottom: 1.25rem;
-    color: #cbd5e1;
+    color: #334155;
   }
   .browser-css li {
     margin-bottom: 0.5rem;
   }
   .browser-css a {
-    color: #818cf8;
+    color: #059669;
     text-decoration: underline;
     font-weight: 500;
   }
   .browser-css a:hover {
-    color: #a5b4fc;
+    color: #047857;
   }
   .browser-css blockquote {
-    border-left: 4px solid #6366f1;
+    border-left: 4px solid #10b981;
     padding-left: 1.25rem;
     font-style: italic;
-    color: #94a3b8;
+    color: #475569;
     margin: 1.5rem 0;
-    background: rgba(99, 102, 241, 0.03);
+    background: rgba(16, 185, 129, 0.04);
     padding-top: 0.5rem;
     padding-bottom: 0.5rem;
     border-top-right-radius: 0.5rem;
     border-bottom-right-radius: 0.5rem;
   }
   .browser-css code {
-    background: #0f172a;
+    background: #f1f5f9;
     padding: 0.2rem 0.4rem;
     border-radius: 0.25rem;
     font-size: 0.875em;
-    color: #f1f5f9;
-    border: 1px solid #1e293b;
+    color: #0f172a;
+    border: 1px solid #e2e8f0;
     font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
   }
   .browser-css pre {
-    background: #0f172a;
+    background: #f8fafc;
     padding: 1.25rem;
     border-radius: 0.75rem;
     overflow-x: auto;
     margin-bottom: 1.5rem;
-    border: 1px solid #1e293b;
+    border: 1px solid #e2e8f0;
   }
   .browser-css pre code {
     background: transparent;

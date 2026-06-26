@@ -31,8 +31,8 @@ function Signup() {
 
   return (
     <div className="flex items-center justify-center w-full min-h-[70vh] px-4 py-12">
-        <div className="mx-auto w-full max-w-md glass-card rounded-2xl p-8 md:p-10 border border-slate-800 shadow-2xl relative">
-            <div className="absolute -top-10 left-1/2 transform -translate-x-1/2 w-20 h-20 bg-indigo-500/20 rounded-full blur-2xl pointer-events-none"></div>
+        <div className="mx-auto w-full max-w-md glass-card rounded-2xl p-8 md:p-10 border border-slate-200/80 shadow-2xl relative">
+            <div className="absolute -top-10 left-1/2 transform -translate-x-1/2 w-20 h-20 bg-emerald-500/10 rounded-full blur-2xl pointer-events-none"></div>
             
             <div className="mb-6 flex justify-center">
                 <span className="inline-block">
@@ -40,14 +40,14 @@ function Signup() {
                 </span>
             </div>
             
-            <h2 className="text-center text-2xl md:text-3xl font-extrabold tracking-tight text-slate-100">
+            <h2 className="text-center text-2xl md:text-3xl font-extrabold tracking-tight text-slate-800">
                 Create Account
             </h2>
-            <p className="mt-2 text-center text-sm text-slate-400">
+            <p className="mt-2 text-center text-sm text-slate-600">
                 Already have an account?&nbsp;
                 <Link
                     to="/login"
-                    className="font-semibold text-indigo-400 transition-all duration-200 hover:text-indigo-300 hover:underline"
+                    className="font-semibold text-emerald-600 transition-all duration-200 hover:text-emerald-500 hover:underline"
                 >
                     Sign In
                 </Link>

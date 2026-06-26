@@ -25,10 +25,10 @@ function App(){
 
 
   return !loading ? (
-    <div className='min-h-screen flex flex-col justify-between bg-slate-950 text-slate-100 bg-grid-pattern relative overflow-hidden'>
+    <div className='min-h-screen flex flex-col justify-between bg-slate-50 text-slate-900 bg-grid-pattern relative overflow-hidden'>
       {/* Ambient backgrounds */}
-      <div className="absolute top-[-10%] left-[-10%] w-[50vw] h-[50vw] bg-indigo-500/10 rounded-full blur-[120px] pointer-events-none"></div>
-      <div className="absolute bottom-[-10%] right-[-10%] w-[50vw] h-[50vw] bg-purple-500/10 rounded-full blur-[120px] pointer-events-none"></div>
+      <div className="absolute top-[-10%] left-[-10%] w-[50vw] h-[50vw] bg-emerald-500/5 rounded-full blur-[120px] pointer-events-none"></div>
+      <div className="absolute bottom-[-10%] right-[-10%] w-[50vw] h-[50vw] bg-teal-500/5 rounded-full blur-[120px] pointer-events-none"></div>
       
       <div className='w-full z-10 flex flex-col min-h-screen'>
         <Header />
@@ -39,10 +39,10 @@ function App(){
       </div>
     </div>
   ) : (
-    <div className="min-h-screen flex items-center justify-center bg-slate-950 text-slate-100">
+    <div className="min-h-screen flex items-center justify-center bg-slate-50 text-slate-900">
       <div className="flex flex-col items-center gap-4">
-        <div className="w-12 h-12 border-4 border-indigo-500 border-t-transparent rounded-full animate-spin"></div>
-        <p className="text-indigo-400 font-medium animate-pulse">Loading MegaBlog...</p>
+        <div className="w-12 h-12 border-4 border-emerald-500 border-t-transparent rounded-full animate-spin"></div>
+        <p className="text-emerald-600 font-medium animate-pulse">Loading MegaBlog...</p>
       </div>
     </div>
   )

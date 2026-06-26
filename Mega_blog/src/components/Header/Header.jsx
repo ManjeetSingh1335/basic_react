@@ -56,10 +56,10 @@ function Header() {
                             <li key={item.name}>
                                 <button
                                     onClick={()=>navigate(item.slug)}
-                                    className={`px-4 py-2 text-sm font-semibold rounded-xl transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-indigo-500/25 ${
+                                    className={`px-4 py-2 text-sm font-semibold rounded-xl transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-emerald-500/25 ${
                                         isActive 
-                                        ? 'bg-indigo-600 text-white shadow-md shadow-indigo-600/10' 
-                                        : 'text-slate-300 hover:text-white hover:bg-slate-800/60'
+                                        ? 'bg-emerald-600 text-white shadow-md shadow-emerald-600/10' 
+                                        : 'text-slate-600 hover:text-emerald-600 hover:bg-emerald-50/60'
                                     }`}
                                 >
                                     {item.name}
@@ -69,7 +69,7 @@ function Header() {
                     })}
 
                     {authStatus&&(
-                        <li className="ml-1 pl-1 border-l border-slate-800">
+                        <li className="ml-1 pl-1 border-l border-slate-200">
                             <LogoutBtn />
                         </li>
                     )}
