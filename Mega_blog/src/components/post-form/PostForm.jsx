@@ -21,42 +21,46 @@ export default function PostForm({post}) {
     });
 
     const submit=async(data)=>{
-        //update existing post
-        if(post){
-            //upload new image if selected
-            const file = data.image[0]? await appwriteService.uploadFile(data.image[0]):null;
+        try {
+            if(post){
+                const file = data.image[0]? await appwriteService.uploadFile(data.image[0]):null;
 
-            //delete old image if new image was uploaded
-            if(file){
-                appwriteService.deleteFile(post.featureImage);
-            }
+                if(file){
+                    appwriteService.deleteFile(post.FeaturedImage);
+                }
 
-            //update post in database
-            const dbPost = await appwriteService.updatePost(post.$id, {
-            ...data,
-            featureImage: file ? file.$id : undefined,
-            });
-
-            //redirect to updated post
-            if(dbPost){
-                navigate(`/post/${dbPost.$id}`);
-            }
-
-        //create new post
-        }else{
-            const file=await appwriteService.uploadFile(data.image[0]);
-            if(file){
-                const fileId=file.$id;
-                data.featureImage=fileId;
-                const dbPost=await appwriteService.createPost({...data,userId:userData.$id});
+                const dbPost = await appwriteService.updatePost(post.$id, {
+                ...data,
+                FeaturedImage: file ? file.$id : undefined,
+                });
 
                 if(dbPost){
                     navigate(`/post/${dbPost.$id}`);
+                } else {
+                    alert("Failed to update post. Please check the browser console.");
+                }
+            }else{
+                const file=await appwriteService.uploadFile(data.image[0]);
+                if(file){
+                    const fileId=file.$id;
+                    data.FeaturedImage=fileId;
+                    const dbPost=await appwriteService.createPost({...data,userId:userData.$id});
+
+                    if(dbPost){
+                        navigate(`/post/${dbPost.$id}`);
+                    } else {
+                        alert("Failed to create post. Please check the browser console.");
+                    }
+                } else {
+                    alert("File upload failed. Please check Appwrite Storage bucket permissions.");
                 }
             }
+        } catch (error) {
+            console.error("Submission error:", error);
+            alert("Submission error: " + error.message);
         }
-      
     }
+
 
     const slugTransform=useCallback((value)=>{
         if(value && typeof value==="string")
@@ -81,7 +85,7 @@ export default function PostForm({post}) {
 
   return (
     
-    <form onSubmit={handleSubmit(submit)} className="flex flex-wrap">
+    <form onSubmit={handleSubmit(submit, (errors) => { console.error("Validation Errors:", errors); alert("Form validation failed. Please check: " + Object.keys(errors).join(", ")); })} className="flex flex-wrap">
         
         <div className="w-2/3 px-2">
             <Input
@@ -113,7 +117,7 @@ export default function PostForm({post}) {
             {post && (
                 <div className="w-full mb-4">
                     <img
-                        src={appwriteService.getFilePreview(post.featureImage)}
+                        src={appwriteService.getFilePreview(post.FeaturedImage)}
                         alt={post.title}
                         className="rounded-lg"
                     />
