@@ -1,4 +1,4 @@
-import React from 'react'
+import {useState} from 'react'
 import authService from '../appwrite/auth.js'
 import {Link,useNavigate} from 'react-router-dom'
 import {login} from '../store/authSlice.js'
@@ -20,7 +20,7 @@ function Signup() {
             const userData=await authService.createAccount(data);
             if(userData){
                 const userData=await authService.getCurrentUser();
-                if(userData) dispatch(login(userData));
+                if(userData) dispatch(login({userData}));
                 navigate("/");
             }
         }catch(error){

@@ -1,5 +1,5 @@
 import './App.css';
-import React,{useState, useEffect} from 'react';
+import {useState, useEffect} from 'react';
 import {useDispatch} from 'react-redux';
 import authService from './appwrite/auth';
 import {login, logout} from './store/authSlice';
@@ -21,7 +21,7 @@ function App(){
       }
     })
     .finally(()=> setLoading(false))
-  },[])
+  }, [dispatch])
 
 
   return !loading? (
@@ -29,7 +29,7 @@ function App(){
       <div className='w-full block text-center'>
         <Header/>
         <main>
-          TODO: <Outlet/>
+          <Outlet/>
         </main>
         <Footer/>
       </div>

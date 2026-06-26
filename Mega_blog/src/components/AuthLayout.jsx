@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react'
+import {useEffect, useState} from 'react'
 import {useSelector} from 'react-redux'
 import {useNavigate} from 'react-router-dom'
 
@@ -14,6 +14,7 @@ export default function Protected({children, authentication = true}) {
         } else if(!authentication && authStatus !== authentication){
             navigate("/")
         }
+        // eslint-disable-next-line react-hooks/set-state-in-effect
         setLoader(false)
     }, [authStatus, navigate, authentication])
 

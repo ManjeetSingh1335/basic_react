@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from "react";
+import {useEffect, useState} from "react";
 import {Link, useNavigate, useParams} from "react-router-dom";
 import service from "../appwrite/config.js";
 import {Button, Container} from "../components";
@@ -32,7 +32,7 @@ export default function Post() {
         service.deletePost(post.$id)
         .then((status)=>{
             if(status){
-                service.deleteFile(post.featuredImage);
+                service.deleteFile(post.featureImage);
                 navigate("/");
             }
         });
@@ -44,7 +44,7 @@ export default function Post() {
             <Container>
                 <div className="w-full flex justify-center mb-4 relative border rounded-xl p-2">
                     <img
-                        src={appwriteService.getFilePreview(post.featuredImage)}
+                        src={service.getFilePreview(post.featureImage)}
                         alt={post.title}
                         className="rounded-xl"
                     />

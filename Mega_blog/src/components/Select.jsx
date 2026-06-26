@@ -1,11 +1,11 @@
 import React, {useId} from 'react'
 
-function Select(ref,{
+function Select({
     options,
     label,
-    className,
+    className = "",
     ...props
-}) {
+}, ref) {
     const id=useId();
   return (
     <div className='w-full'>
@@ -13,6 +13,7 @@ function Select(ref,{
         {label && <label 
                     htmlFor={id} 
                     className=''>
+                    {label}
                   </label>
         }
 

@@ -1,7 +1,7 @@
 import React, {useCallback} from 'react'
 import {useForm} from "react-hook-form";
 import {Button,Input,RTE,Select} from "../index.js";
-import Service from "../../appwrite/config.js";
+import appwriteService from "../../appwrite/config.js";
 import {useNavigate} from "react-router-dom";
 import {useSelector} from "react-redux";
 
@@ -28,13 +28,13 @@ export default function PostForm({post}) {
 
             //delete old image if new image was uploaded
             if(file){
-                appwriteService.deleteFile(post.featuredImage);
+                appwriteService.deleteFile(post.featureImage);
             }
 
             //update post in database
             const dbPost = await appwriteService.updatePost(post.$id, {
             ...data,
-            featuredImage: file ? file.$id : undefined,
+            featureImage: file ? file.$id : undefined,
             });
 
             //redirect to updated post
@@ -44,11 +44,11 @@ export default function PostForm({post}) {
 
         //create new post
         }else{
-            const file=await appwriteService.createPost(data.image[0]);
+            const file=await appwriteService.uploadFile(data.image[0]);
             if(file){
                 const fileId=file.$id;
-                data.featuredImage=fileId;
-                const dbPost=await appwriteService.uploadFile({...data,userId:userData.$id});
+                data.featureImage=fileId;
+                const dbPost=await appwriteService.createPost({...data,userId:userData.$id});
 
                 if(dbPost){
                     navigate(`/post/${dbPost.$id}`);
@@ -75,7 +75,7 @@ export default function PostForm({post}) {
                 setValue("slug",slugTransform(value.title),{shouldValidate: true});
             }
         });
-        return()=>subscription.unsubscribe
+        return()=>subscription.unsubscribe()
     },[watch,slugTransform,setValue]);
 
 
@@ -113,7 +113,7 @@ export default function PostForm({post}) {
             {post && (
                 <div className="w-full mb-4">
                     <img
-                        src={appwriteService.getFilePreview(post.featuredImage)}
+                        src={appwriteService.getFilePreview(post.featureImage)}
                         alt={post.title}
                         className="rounded-lg"
                     />
